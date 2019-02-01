@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>color chnage test</title>
+    </head>
+    <body>
+        <h1>This BG will change colour</h1>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            //write some socket client code!
+            let socket = io();
+
+
+            //built in event
+            socket.on('connect', function(date){
+                console.log('connected');
+            });
+
+            socket.on('color_change', function(data){
+                let colorStr = 'rgb(' + data.r +  ', ' + data.g + ', ' + data.b +') ';
+                console.log('color change event: ' + colorStr);
+                document.body.style.backgroundColor = colorStr   
+            });
+        </script>
+    </body>
+</html>
