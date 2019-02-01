@@ -28,6 +28,30 @@ socketIO.on('connection', function(socket){
     socket.on('diconnect', function(){
         console.log(socket.id + 'disconnected')
     });
+
+    socket.on('red', function(){
+        console.log('red event detected')
+
+        //socket = one client
+        //io.socket = all clients
+        socketIO.emit("color_change", {r:255,g:0, b:0});
+    });
+
+    socket.on('Green', function(){
+        console.log('Green event detected')
+
+        //socket = one client
+        //io.socket = all clients
+        socketIO.emit("color_change", {r:0,g:255, b:0});
+    });
+
+    socket.on('blue', function(){
+        console.log('blue event detected')
+
+        //socket = one client
+        //io.socket = all clients
+        socketIO.emit("color_change", {r:0,g:0, b:255});
+    });
 });
 
 
